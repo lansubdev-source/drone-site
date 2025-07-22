@@ -1,48 +1,59 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import AnimatedDropdownNav from "@/components/AnimatedDropdownNav"; // Adjust if needed
 
 export default function Navbar() {
-  const [show, setShow] = useState(false);
-  const pathname = usePathname();
+  const [showNavbar, setShowNavbar] = useState(false);
 
   useEffect(() => {
+    const heroSection = document.getElementById("hero");
+    const heroHeight = heroSection?.offsetHeight || 400;
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      if (pathname === "/home" || pathname === "/") {
-        setShow(scrollY > 10); // Show navbar once scroll begins
-      } else {
-        setShow(true); // Always show on other pages
-      }
+      setShowNavbar(scrollY > heroHeight - 80); // Trigger once past hero
     };
 
+    handleScroll(); // Run on mount in case user refreshes halfway down
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
-
-  if (!show) return null;
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0a2540]/90 text-white shadow-md transition duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-10">
-        <Link href="/home">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} />
+    <header
+      className={`fixed top-0 left-0 w-full z-50 font-urbanist transition-all duration-300 ${
+        showNavbar
+          ? "opacity-100 bg-[#0B0F2B] bg-opacity-95 shadow-md backdrop-blur-sm"
+          : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="flex items-center justify-between px-6 md:px-12 py-4">
+        {/* Logo */}
+        <Link href="/" className="text-xl font-bold text-white flex items-center gap-2">
+          <Image src="/logo.png" alt="Magic Myna Logo" width={100} height={40} />
         </Link>
-        <div className="flex gap-6 font-medium text-sm sm:text-base">
-          <Link href="/#home" className="hover:text-gray-300">Home</Link>
-          <Link href="/careers" className="hover:text-gray-300">Careers</Link>
-          <Link href="/solutions" className="hover:text-gray-300">Solutions</Link>
-          <Link href="/#services" className="hover:text-gray-300">Services</Link>
-          <Link href="/products" className="hover:text-gray-300 transition">Products</Link>
-           <Link href="/about" className="hover:text-gray-300">About Us</Link>
-          <Link href="/contact" className="hover:text-gray-300">Contact</Link>
-        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6 text-white font-medium relative">
+          <Link href="/" className="hover:text-sky-100">Home</Link>
+          <Link href="/about" className="hover:text-sky-100">About</Link>
+          <AnimatedDropdownNav />
+          <Link href="/drone-as-a-service" className="hover:text-sky-100">Drone as a Service</Link>
+          <Link href="/rpto" className="hover:text-sky-100">RPTO</Link>
+        </nav>
+
+        {/* Get in Touch Button */}
+        <Link
+          href="/contact"
+          className="hidden md:inline-block px-5 py-2 border border-white text-white rounded-full hover:bg-white hover:text-black transition"
+        >
+          Get in Touch
+        </Link>
       </div>
-    </nav>
+    </header>
   );
 }

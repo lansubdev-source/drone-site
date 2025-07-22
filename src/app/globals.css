@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap');
 
 
 html,
@@ -29,3 +34,57 @@ body {
 body {
  font-family: 'Urbanist', sans-serif;
 }
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.char {
+  display: inline-block;
+}
+/* Main smoke trail */
+.smoke-trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Sparkle dots */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0, 183, 255, 0.9), rgba(0, 183, 255, 0));
+  box-shadow:
+    0 0 8px rgba(0, 183, 255, 0.6),
+    0 0 16px rgba(0, 183, 255, 0.4),
+    0 0 24px rgba(0, 183, 255, 0.2);
+  animation: sparkleFade 0.5s ease-out forwards;
+}
+
+@keyframes sparkleFade {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+
+
+

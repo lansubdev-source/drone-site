@@ -2,6 +2,7 @@
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import MagicCursor from "@/components/MagicCursor";
 
 export const metadata = {
   title: "Magic Myna | Drone Solutions",
@@ -32,6 +33,7 @@ export default function RootLayout({
             '"Open Sans", "PingFang SC", Arial, sans-serif',
         }}
       >
+        <MagicCursor/>
         <Navbar />
         <main>{children}</main>
         <Footer />

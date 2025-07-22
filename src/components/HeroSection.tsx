@@ -1,63 +1,114 @@
 "use client";
 
-import Link from "next/link";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import AnimatedDropdownNav from "@/components/AnimatedDropdownNav";
+import { FlipWords } from "@/components/FlipWords"; // Make sure this path is correct
 
 export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat font-poppins"
-      style={{ backgroundImage: "url('/hero1.png')" }}
+      className="relative w-full min-h-screen overflow-hidden font-urbanist text-white"
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+      >
+        <source src="/background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-0" />
+
       {/* Transparent Navbar */}
-      <nav className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center">
-        {/* Left Side: Logo + Nav */}
-        <div className="flex items-center gap-12">
-          {/* Logo Image */}
-          <Link href="/home">
-            <Image
-              src="/logo.png"
-              alt="Magic Myna Logo"
-              width={48}
-              height={48}
-              className="object-contain"
-            />
+      <header className="absolute top-0 left-0 w-full z-20">
+        <div className="flex items-center justify-between px-6 md:px-12 py-4">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-xl font-bold text-white flex items-center gap-2"
+          >
+            <Image src="/logo.png" alt="Magic Myna Logo" width={100} height={40} />
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex gap-9 text-base font-semibold text-white">
-            <Link href="/#home" className="hover:text-gray-300 transition">Home</Link>
-            <Link href="/careers" className="hover:text-gray-300 transition">Careers</Link>
-            <Link href="/solutions" className="hover:text-gray-300 transition">Solutions</Link>
-            <Link href="/#services" className="hover:text-gray-300 transition">Services</Link>
-            <Link href="/products" className="hover:text-gray-300 transition">Products</Link>
-            <Link href="/about" className="hover:text-gray-300 transition">About Us</Link>
-            <Link href="/contact" className="hover:text-gray-300 transition">Contact</Link>
-          </div>
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center space-x-6 text-white font-medium relative">
+            <Link href="/" className="hover:text-blue-600">Home</Link>
+            <Link href="/about" className="hover:text-blue-600">About</Link>
+            <AnimatedDropdownNav />
+            <Link href="/drone-as-a-service" className="hover:text-blue-600">
+              Drone as a Service
+            </Link>
+            <Link href="/rpto" className="hover:text-blue-600">RPTO</Link>
+          </nav>
+
+          {/* Get in Touch */}
+          <Link
+            href="/contact"
+            className="hidden md:inline-block px-5 py-2 bg-transparent border border-white text-white rounded-full hover:bg-white hover:text-black transition"
+          >
+            Get in Touch
+          </Link>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-start h-full text-center px-4 pt-72 text-white">
-        <h1 className="font-inter text-5xl font-extrabold tracking-tight">
-          MAGIC MYNA
-        </h1>
-        <p className="mt-4 text-lg md:text-xl font-medium font-dji">
-          Explore Vivid
-        </p>
-        <div className="mt-6 flex gap-4">
-          <Link href="/products">
-            <button className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">
-              Buy Now
-            </button>
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-4xl md:text-6xl font-extrabold mb-2 tracking-wide text-center"
+        >
+          <span className="text-white">Aero Mobility solutions for{" "}</span>
+          <span
+            className="inline-block align-middle text-sky-400"
+            style={{ display: "inline-block", width: "10ch", textAlign: "left" }}
+          >
+            <FlipWords
+              words={["Logistics", "Agriculture", "Defense"]}
+              duration={3000}
+              className="text-sky-400"
+            />
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="text-lg md:text-2xl text-white font-medium mb-8"
+        >
+          Explore vivid
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="flex flex-col md:flex-row gap-4"
+        >
+          <Link
+            href="/products"
+            className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
+          >
+            Our Products
           </Link>
-          <Link href="/about">
-            <button className="bg-transparent border border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition">
-              Learn More
-            </button>
+
+          <Link
+            href="#video"
+            className="px-6 py-3 bg-transparent border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition"
+          >
+            ▶ Watch Video
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

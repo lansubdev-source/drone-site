@@ -1,123 +1,123 @@
-import React from "react";
+'use client';
+
 import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
+  Facebook,
+  Linkedin,
+  Youtube,
+  X,
+  Mail,
+  Phone,
+} from 'lucide-react';
+import Link from 'next/link';
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-[#121212] text-white text-sm py-12">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
-        {/* Address */}
-        <div>
-          <h3 className="font-semibold text-base mb-4">Address</h3>
-          <p>
-            No:203, Ashritha Apartments,<br />
-            3rd Cross, Neeladrinagar,<br />
-            Electronic City, Bangalore,<br />
-            Karnataka, India – 560100
-          </p>
-          <br />
-          <p>
-            No:125, Thirumalapalayam Post,<br />
-            Coimbatore, Tamil Nadu,<br />
-            India – 641105
-          </p>
-        </div>
+    <footer className="bg-[#0f172a] text-white text-sm font-poppins">
+      {/* 🔹 Top Section */}
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
 
-        {/* Contact */}
+        {/* 🔸 Logo & Address */}
         <div>
-          <h3 className="font-semibold text-base mb-4">Contact</h3>
-          <p>
-            Email:{" "}
-            <a href="mailto:info@magicmyna.in" className="hover:underline text-blue-400">
-              info@magicmyna.in
-            </a>
+          <img src="/logo.png" alt="MagicMyna" className="w-36 mb-4" />
+          <p className="text-gray-400 leading-relaxed">
+            GoodWorks Infinity Park,<br />
+            Tower – 1, 92/A, 2nd Main Road, Electronic City,<br />
+            Phase – 1, Bengaluru, Karnataka, 560100
           </p>
-          <p>
-            Phone:{" "}
-            <a href="tel:+919900539540" className="hover:underline text-blue-400">
-              9900539540
-            </a>
-          </p>
-          <p className="mt-4">
-            You can also schedule a visit or a demo.
-          </p>
-        </div>
-
-        {/* Quick Links */}
-        <div>
-          <h3 className="font-semibold text-base mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Who We Are</a></li>
-            <li><a href="#" className="hover:underline">Careers</a></li>
-            <li><a href="#" className="hover:underline">Contact Us</a></li>
-            <li><a href="#" className="hover:underline">Dealer Portal</a></li>
-          </ul>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="font-semibold text-base mb-4">Stay Connected</h3>
-          <div className="flex space-x-4 mt-2">
+          <div className="flex gap-4 mt-5 text-cyan-400">
             <a
               href="https://www.facebook.com/MagicMyna"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
+              aria-label="Facebook"
             >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://x.com/MagicMyna"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/magicmyna-private-limited/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://www.instagram.com/magicmyna/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
-            >
-              <FaInstagram />
+              <Facebook className="w-5 h-5 cursor-pointer hover:text-white transition-transform hover:scale-110" />
             </a>
             <a
               href="https://www.youtube.com/channel/UClrkHnAyBVnD5-1htHft-jA"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white"
+              aria-label="X"
             >
-              <FaYoutube />
+              <X className="w-5 h-5 cursor-pointer hover:text-white transition-transform hover:scale-110" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/magicmyna-private-limited/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-5 h-5 cursor-pointer hover:text-white transition-transform hover:scale-110" />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UClrkHnAyBVnD5-1htHft-jA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <Youtube className="w-5 h-5 cursor-pointer hover:text-white transition-transform hover:scale-110" />
             </a>
           </div>
         </div>
+
+        {/* 🔸 Company Links */}
+        <div>
+          <h3 className="text-base font-semibold uppercase mb-4 text-white">Company</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li><Link href="/about" className="hover:text-white">About Us</Link></li>
+            <li><Link href="/gallery" className="hover:text-white">Gallery</Link></li>
+            <li><Link href="/blogs" className="hover:text-white">Blogs</Link></li>
+            <li><Link href="/contact" className="hover:text-white">Contact Us</Link></li>
+            <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
+          </ul>
+        </div>
+
+        {/* 🔸 Products */}
+        <div>
+          <h3 className="text-base font-semibold uppercase mb-4 text-white">Products</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li><Link href="/products/hexa-agri-pro" className="hover:text-white">Hexa Agri Pro</Link></li>
+            <li><Link href="/products/octa-plus-extreme" className="hover:text-white">Octa Plus Xtreme</Link></li>
+            <li><Link href="/products/munitirx-4x" className="hover:text-white">Munitrix 4X</Link></li>
+            <li><Link href="/products/varuna-6x" className="hover:text-white">Varuna 6X</Link></li>
+          </ul>
+        </div>
+
+        {/* 🔸 Solutions */}
+        <div>
+          <h3 className="text-base font-semibold uppercase mb-4 text-white">Solutions</h3>
+          <ul className="space-y-2 text-gray-400">
+            <li><Link href="/solutions/agriculture" className="hover:text-white">Agriculture</Link></li>
+            <li><Link href="/solutions/strategic" className="hover:text-white">Strategic</Link></li>
+            <li><Link href="/solutions/logistics" className="hover:text-white">Logistics</Link></li>
+          </ul>
+        </div>
+
+        {/* 🔸 Contact Info */}
+        <div>
+          <h3 className="text-base font-semibold uppercase mb-4 text-white">Contact</h3>
+          <ul className="space-y-3 text-gray-400">
+            <li className="flex items-start gap-2">
+              <Mail size={16} />
+              <a href="mailto:sales@magicmyna.in" className="hover:underline">sales@magicmyna.in</a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Mail size={16} />
+              <a href="mailto:droneservices@magicmyna.in" className="hover:underline">droneservices@magicmyna.in</a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Phone size={16} />
+              <a href="tel:+917418617771" className="hover:underline">+91 741 861 7771</a>
+            </li>
+            <li>Mon–Sat: 09:30am–06:00pm</li>
+          </ul>
+        </div>
       </div>
 
-      {/* Bottom */}
-      <div className="border-t border-gray-700 mt-10 pt-6 text-center text-xs text-gray-400">
-        <p>© 2025 MagicMyna. All rights reserved.</p>
-        <p className="mt-1">
-          <a href="#" className="hover:underline">Privacy Policy</a> ·{" "}
-          <a href="#" className="hover:underline">Terms of Use</a> ·{" "}
-          <a href="#" className="hover:underline">Cookie Preferences</a>
-        </p>
+      {/* 🔹 Bottom Bar */}
+      <div className="border-t border-gray-700 py-4 text-center text-gray-500 text-xs">
+        © {new Date().getFullYear()} MagicMyna. All rights reserved.
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

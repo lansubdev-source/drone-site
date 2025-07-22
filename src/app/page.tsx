@@ -1,21 +1,22 @@
 import HeroSection from "@/components/HeroSection";
-import AlternatingFeatures from "@/components/AlternatingFeatures";
 import FeatureVideoSection from "@/components/FeatureVideoSection";
 import SolutionPage from "@/components/SolutionPage";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import DroneAsAService from "@/components/DroneAsAService";
-import RPTOPage from "@/components/RPTO";
 import ContactPage from "./contact/page";
+import DroneFleet from "@/components/DroneFleet";
+import ImpactAreas from "@/components/ImpactAreas";
+import AchievementsSection from "@/components/AchievementSection";
+import LatestBlogs from "@/components/LatestBlogs";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
       <SolutionPage/>
-      <AlternatingFeatures/>
-      <DroneAsAService/>
-      <RPTOPage/>
-      <WhyChooseUs/>
+      <DroneFleet/>
+      <ImpactAreas/>
+      <AchievementsSection/>
+      <LatestBlogs/>
       <ContactPage/>
     </main>
   );

@@ -1,115 +1,92 @@
+// src/components/HeroSection.tsx
 "use client";
 
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Environment, useGLTF } from "@react-three/drei";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import AnimatedDropdownNav from "@/components/AnimatedDropdownNav";
-import { FlipWords } from "@/components/FlipWords"; // Make sure this path is correct
+import * as THREE from "three";
 
-export default function HeroSection() {
+const DroneModel = ({ mouse }: { mouse: { x: number; y: number } }) => {
+  const ref = useRef<THREE.Group>(null);
+  const { scene } = useGLTF("/models/drone.glb");
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.rotation.y = THREE.MathUtils.lerp(
+        ref.current.rotation.y,
+        mouse.x * 0.5,
+        0.05
+      );
+      ref.current.rotation.x = THREE.MathUtils.lerp(
+        ref.current.rotation.x,
+        -mouse.y * 0.3,
+        0.05
+      );
+    }
+  });
+
+  return <primitive ref={ref} object={scene} scale={1.8} />;
+};
+
+const HeroSection = () => {
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = (e.clientY / window.innerHeight) * 2 - 1;
+    setMouse({ x, y });
+  };
+
   return (
-    <section
-      id="home"
-      className="relative w-full min-h-screen overflow-hidden font-urbanist text-white"
+    <div
+      onMouseMove={handleMouseMove}
+      className="relative h-screen w-full bg-black overflow-hidden"
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
-      >
-        <source src="/background.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* 3D Canvas */}
+      <Canvas className="absolute inset-0 z-0">
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[2, 2, 5]} intensity={1} />
+        <DroneModel mouse={mouse} />
+        <Environment preset="sunset" />
+      </Canvas>
 
-      {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-0" />
-
-      {/* Transparent Navbar */}
-      <header className="absolute top-0 left-0 w-full z-20">
-        <div className="flex items-center justify-between px-6 md:px-12 py-4">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-xl font-bold text-white flex items-center gap-2"
-          >
-            <Image src="/logo.png" alt="Magic Myna Logo" width={100} height={40} />
-          </Link>
-
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 text-white font-medium relative">
-            <Link href="/" className="hover:text-blue-600">Home</Link>
-            <Link href="/about" className="hover:text-blue-600">About</Link>
-            <AnimatedDropdownNav />
-            <Link href="/drone-as-a-service" className="hover:text-blue-600">
-              Drone as a Service
-            </Link>
-            <Link href="/rpto" className="hover:text-blue-600">RPTO</Link>
-          </nav>
-
-          {/* Get in Touch */}
-          <Link
-            href="/contact"
-            className="hidden md:inline-block px-5 py-2 bg-transparent border border-white text-white rounded-full hover:bg-white hover:text-black transition"
-          >
-            Get in Touch
-          </Link>
-        </div>
-      </header>
-
-      {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6">
+      {/* Overlay Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6">
         <motion.h1
-          initial={{ opacity: 0, y: -20 }}
+          className="text-white text-4xl md:text-6xl font-bold tracking-wide"
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl font-extrabold mb-2 tracking-wide text-center"
         >
-          <span className="text-white">Aero Mobility solutions for{" "}</span>
-          <span
-            className="inline-block align-middle text-sky-400"
-            style={{ display: "inline-block", width: "10ch", textAlign: "left" }}
-          >
-            <FlipWords
-              words={["Logistics", "Agriculture", "Defense"]}
-              duration={3000}
-              className="text-sky-400"
-            />
-          </span>
+          Magic Myna
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
+          className="text-gray-300 text-lg md:text-xl mt-4 max-w-xl"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 1 }}
-          className="text-lg md:text-2xl text-white font-medium mb-8"
+          transition={{ delay: 0.3, duration: 1 }}
         >
-          Explore vivid
+          Drones That Deliver. From Farmlands to Frontlines.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col md:flex-row gap-4"
+          className="mt-8 flex gap-4 flex-wrap justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1 }}
         >
-          <Link
-            href="/products"
-            className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
-          >
-            Our Products
-          </Link>
-
-          <Link
-            href="#video"
-            className="px-6 py-3 bg-transparent border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition"
-          >
-            ▶ Watch Video
-          </Link>
+          <button className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition">
+            Explore Our Drones
+          </button>
+          <button className="px-6 py-3 border border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition">
+            Watch in Action
+          </button>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default HeroSection;

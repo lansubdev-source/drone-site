@@ -21,7 +21,8 @@ module.exports = {
           '"WenQuanYi Micro Hei"',
           'Arial',
           'sans-serif',
-        ],  }
+        ],
+      mono: ['"DM Mono"', 'monospace'],  }
   }
 }
 }

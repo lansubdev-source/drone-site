@@ -10,7 +10,7 @@ const solutions = [
       "Automated spraying & seeding",
       "Soil analysis & yield estimation",
     ],
-    image: "/agriculture.jpg",
+    image: "/drones/hexa-agri-pro.webp",
   },
   {
     title: "Logistics Drones",

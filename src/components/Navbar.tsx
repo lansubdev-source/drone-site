@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link href="/" className="hover:text-sky-100">Home</Link>
           <Link href="/about" className="hover:text-sky-100">About</Link>
           <AnimatedDropdownNav />
-          <Link href="/drone-as-a-service" className="hover:text-sky-100">Drone as a Service</Link>
+          <Link href="/DronePage" className="hover:text-sky-100">Drone as a Service</Link>
           <Link href="/rpto" className="hover:text-sky-100">RPTO</Link>
         </nav>
 

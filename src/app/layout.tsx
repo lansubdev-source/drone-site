@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -20,20 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Google Fonts – Open Sans */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body
-        className="transition-colors duration-300 bg-white text-black"
-        style={{
-          fontFamily:
-            '"Open Sans", "PingFang SC", Arial, sans-serif',
-        }}
-      >
-        <MagicCursor/>
+      <body className="bg-white text-black transition-colors duration-300 font-sans">
+        <MagicCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

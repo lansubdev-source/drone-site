@@ -43,7 +43,7 @@ export default function HeroSection() {
             <Link href="/" className="hover:text-blue-600">Home</Link>
             <Link href="/about" className="hover:text-blue-600">About</Link>
             <AnimatedDropdownNav />
-            <Link href="/drone-as-a-service" className="hover:text-blue-600">
+            <Link href="/DronePage" className="hover:text-blue-600">
               Drone as a Service
             </Link>
             <Link href="/rpto" className="hover:text-blue-600">RPTO</Link>

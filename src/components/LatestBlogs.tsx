@@ -1,27 +1,31 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { formatDistanceToNow, parseISO } from "date-fns";
 
 const blogs = [
   {
     title: "Beyond Boundaries: The Role of Drones in Modern Logistics",
-    desc: "Redefining supply chain efficiency with rugged drones.",
+    desc: "Redefining supply chain efficiency with rugged and first class drones.",
     image: "/products/logistics.webp",
     date: "2025-05-08",
+    slug: "logistics",
   },
   {
     title: "The Future of Emergency Response: Drones to the Rescue",
     desc: "Enhancing disaster relief and real-time awareness with UAVs.",
     image: "/products/fire.webp",
     date: "2025-05-08",
+    slug: "fire",
   },
   {
     title: "How UAVs Are Transforming Precision Agriculture",
     desc: "Revolutionizing farming with precision spraying and crop monitoring.",
     image: "/products/agri.jpg",
     date: "2025-05-08",
+    slug: "agri",
   },
 ];
 
@@ -84,13 +88,15 @@ export default function LatestBlogs() {
                   {blog.desc}
                 </CardItem>
 
-                {/* Read More */}
-                <CardItem
-                  translateZ={10}
-                  className="mt-5 text-teal-600 font-medium text-sm flex items-center gap-1 z-10 hover:underline hover:text-teal-700 transition-colors"
-                >
-                  Read more →
-                </CardItem>
+                {/* Read More Link (wrapped in <Link>) */}
+                <Link href={`/blogs/${blog.slug}`} passHref>
+                  <CardItem
+                    translateZ={10}
+                    className="mt-5 z-10 text-teal-600 font-medium text-sm flex items-center gap-1 hover:underline hover:text-teal-700 transition-colors cursor-pointer"
+                  >
+                    Read more →
+                  </CardItem>
+                </Link>
               </CardBody>
             </CardContainer>
           );

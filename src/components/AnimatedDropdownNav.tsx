@@ -9,6 +9,7 @@ export default function AnimatedDropdownNav() {
   const [selected, setSelected] = useState<number | null>(null);
   const [dir, setDir] = useState<"l" | "r" | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleSetSelected = (val: number | null) => {
     if (typeof selected === "number" && typeof val === "number") {
@@ -19,7 +20,6 @@ export default function AnimatedDropdownNav() {
     setSelected(val);
   };
 
-  // Close on click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -29,7 +29,6 @@ export default function AnimatedDropdownNav() {
         setSelected(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -37,15 +36,20 @@ export default function AnimatedDropdownNav() {
   return (
     <div
       ref={containerRef}
-      className="relative"
-      onMouseLeave={() => handleSetSelected(null)} // ✅ Closes on mouse leave
+      className="relative z-50"
+      onMouseEnter={() => {
+        if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
+      }}
+      onMouseLeave={() => {
+        hoverTimeout.current = setTimeout(() => setSelected(null), 200);
+      }}
     >
       <div className="flex gap-6 font-medium text-white">
         {TABS.map((tab) => (
           <button
             key={tab.id}
             id={`shift-tab-${tab.id}`}
-            onMouseEnter={() => handleSetSelected(tab.id)} // ✅ Opens on hover
+            onMouseEnter={() => handleSetSelected(tab.id)}
             className={`flex items-center gap-1 transition-colors ${
               selected === tab.id ? "text-blue-400" : "text-white"
             }`}
@@ -104,9 +108,8 @@ const DropdownContent = ({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
-      className="absolute top-[100%] mt-3 w-[280px] md:w-[360px] rounded-lg bg-white text-black shadow-xl border border-gray-300 p-4 z-50"
+      className="absolute top-[100%] mt-3 w-[280px] md:w-[360px] rounded-lg bg-white text-black shadow-xl border border-gray-300 p-4"
     >
-      {/* Nub (arrow) */}
       <motion.span
         style={{ left }}
         animate={{ left }}
@@ -129,18 +132,25 @@ const DropdownContent = ({
 
 const ProductMenu = ({ onClose }: { onClose: () => void }) => (
   <div className="flex flex-col gap-2 text-sm">
-    <Link href="/products/hexa-agri-pro" onClick={onClose} className="hover:text-blue-600">
-      Hexa Agri Pro
-    </Link>
-    <Link href="/products/octa-plus-extreme" onClick={onClose} className="hover:text-blue-600">
-      Octa Plus Extreme
-    </Link>
-    <Link href="/products/munitrix-4" onClick={onClose} className="hover:text-blue-600">
-      Munitrix 4
-    </Link>
-    <Link href="/products/varuna-6x" onClick={onClose} className="hover:text-blue-600">
-      Varuna 6x
-    </Link>
+    {[
+      { name: "Hexa Agri Pro", path: "hexa-agri-pro" },
+      { name: "Octa Plus Extreme", path: "octa-plus-extreme" },
+      { name: "Munitrix 4", path: "munitrix-4" },
+      { name: "Varuna 6x", path: "varuna-6x" },
+      { name: "Octa - Agri", path: "octa-agri" },
+      { name: "Octa - Med", path: "octa-med" },
+      { name: "Pavan QC1", path: "pavan-qc1" },
+      { name: "Workhorse Pro", path: "workhorse-pro" },
+    ].map((item) => (
+      <Link
+        key={item.path}
+        href={`/products/${item.path}`}
+        onClick={onClose}
+        className="hover:text-blue-600"
+      >
+        {item.name}
+      </Link>
+    ))}
   </div>
 );
 
@@ -154,6 +164,15 @@ const SolutionsMenu = ({ onClose }: { onClose: () => void }) => (
     </Link>
     <Link href="/solutions/agriculture" onClick={onClose} className="hover:text-blue-600">
       Agriculture
+    </Link>
+    <Link href="/solutions/healthcareandemergency" onClick={onClose} className="hover:text-blue-600">
+      Healthcare and Emergency 
+    </Link>
+    <Link href="/solutions/railways" onClick={onClose} className="hover:text-blue-600">
+      Railways
+    </Link>
+    <Link href="/solutions/powerlinestringing" onClick={onClose} className="hover:text-blue-600">
+      Powerline Stringing
     </Link>
   </div>
 );

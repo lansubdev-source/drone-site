@@ -7,6 +7,7 @@ import DroneFleet from "@/components/DroneFleet";
 import ImpactAreas from "@/components/ImpactAreas";
 import AchievementsSection from "@/components/AchievementSection";
 import LatestBlogs from "@/components/LatestBlogs";
+import SnapshotsSection from "@/components/SnapshotsSection";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
       <ImpactAreas/>
       <AchievementsSection/>
       <LatestBlogs/>
-      <ContactPage/>
+      <SnapshotsSection/>
     </main>
   );
 }

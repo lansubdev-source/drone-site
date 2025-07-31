@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedDropdownNav from "@/components/AnimatedDropdownNav";
-import { FlipWords } from "@/components/FlipWords"; // Make sure this path is correct
+import { FlipWords } from "@/components/FlipWords";
 
 export default function HeroSection() {
   return (
@@ -18,17 +18,17 @@ export default function HeroSection() {
         muted
         loop
         playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/background.mp4" type="video/mp4" />
+        <source src="/back.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-0" />
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-10" />
 
       {/* Transparent Navbar */}
-      <header className="absolute top-0 left-0 w-full z-20">
+      <header className="absolute top-0 left-0 w-full z-30">
         <div className="flex items-center justify-between px-6 md:px-12 py-4">
           {/* Logo */}
           <Link
@@ -60,7 +60,7 @@ export default function HeroSection() {
       </header>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6">
+      <div className="relative z-20 flex flex-col items-center justify-center text-center min-h-screen px-6">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export default function HeroSection() {
           className="flex flex-col md:flex-row gap-4"
         >
           <Link
-            href="/products"
+            href="/ProductsPage"
             className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
           >
             Our Products

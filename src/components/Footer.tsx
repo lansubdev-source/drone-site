@@ -80,6 +80,10 @@ export default function Footer() {
             <li><Link href="/products/octa-plus-extreme" className="hover:text-white">Octa Plus Xtreme</Link></li>
             <li><Link href="/products/munitirx-4x" className="hover:text-white">Munitrix 4X</Link></li>
             <li><Link href="/products/varuna-6x" className="hover:text-white">Varuna 6X</Link></li>
+            <li><Link href="/products/octa-agri" className="hover:text-white">Octa Agri</Link></li>
+            <li><Link href="/products/octa-med" className="hover:text-white">Octa Med</Link></li>
+            <li><Link href="/products/pavan-qc1" className="hover:text-white">Pavan Qc1</Link></li>
+            <li><Link href="/products/workhorse-pro" className="hover:text-white">Workhorse Pro</Link></li>
           </ul>
         </div>
 
@@ -90,6 +94,9 @@ export default function Footer() {
             <li><Link href="/solutions/agriculture" className="hover:text-white">Agriculture</Link></li>
             <li><Link href="/solutions/strategic" className="hover:text-white">Strategic</Link></li>
             <li><Link href="/solutions/logistics" className="hover:text-white">Logistics</Link></li>
+            <li><Link href="/solutions/healthcareandemergency" className="hover:text-white">Heatlhcare and Emergency</Link></li>
+            <li><Link href="/solutions/powerlinestringing" className="hover:text-white">Powerline Stringing</Link></li>
+            <li><Link href="/solutions/railways" className="hover:text-white">Railways</Link></li>
           </ul>
         </div>
 

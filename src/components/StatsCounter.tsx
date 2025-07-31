@@ -6,9 +6,15 @@ type CounterProps = {
   target: number;
   label: string;
   suffix?: string;
+  textColorClass?: string; // optional override for text color
 };
 
-export default function StatsCounter({ target, label, suffix = '+' }: CounterProps) {
+export default function StatsCounter({
+  target,
+  label,
+  suffix = '+',
+  textColorClass = 'text-gray-900', // default: dark text for light background
+}: CounterProps) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
@@ -20,8 +26,8 @@ export default function StatsCounter({ target, label, suffix = '+' }: CounterPro
           hasAnimated.current = true;
 
           let current = 0;
-          const duration = 1800; // ⏱ Faster total duration (ms)
-          const frameRate = 30; // 🕒 Update every 30ms
+          const duration = 1800;
+          const frameRate = 30;
           const totalSteps = Math.ceil(duration / frameRate);
           const increment = Math.ceil(target / totalSteps);
 
@@ -43,12 +49,12 @@ export default function StatsCounter({ target, label, suffix = '+' }: CounterPro
   }, [target]);
 
   return (
-    <div ref={ref} className="text-center p-6">
-      <div className="text-4xl font-bold text-black">
+    <div ref={ref} className="text-center p-2">
+      <div className={`text-3xl md:text-4xl font-bold ${textColorClass}`}>
         {count}
         {suffix}
       </div>
-      <div className="text-gray-500 mt-1 text-sm">{label}</div>
+      <div className={`text-sm mt-1 ${textColorClass}`}>{label}</div>
     </div>
   );
 }

@@ -1,144 +1,146 @@
 # 🛸 Magic Myna – Drone Technology Website
-
-Magic Myna is a feature-rich, animated, and modern drone technology website showcasing advanced drone models, DaaS (Drone as a Service), industry solutions, and interactive UI elements. Built using cutting-edge web technologies including React, Next.js, Tailwind CSS, and Framer Motion, the platform focuses on immersive user experience, smooth animations, and high-end visual presentation.
+Magic Myna is a feature-rich, animated, modern drone technology website showcasing advanced drone models, DaaS (Drone as a Service), industry solutions, and interactive UI elements. Built with React, Next.js, Tailwind CSS, and Framer Motion, the site focuses on immersive UX, smooth animations, and high-end visual presentation.
 
 ---
 
 ## 📌 About Magic Myna
 
-Magic Myna is an innovative drone technology company committed to creating fully autonomous, efficient, and scalable drone solutions for agriculture, logistics, surveillance, geospatial mapping, and industrial use cases.
-
-This website serves as the company’s digital presence, highlighting drone models, services, technological capabilities, and industry-specific solutions.
+Magic Myna is an innovative drone technology company building autonomous, efficient, and scalable drone solutions for agriculture, logistics, surveillance, geospatial mapping, and industrial applications. This website is the company's digital presence, highlighting products, services, capabilities, and industry solutions.
 
 ### 🎯 Vision
-To revolutionize the drone ecosystem by building powerful, intelligent, and accessible drone technology for industries, communities, and enterprises worldwide.
+Revolutionize the drone ecosystem with powerful, intelligent, and accessible drone technology for industries, communities, and enterprises worldwide.
 
 ### 💡 What Makes Magic Myna Unique
-- **Advanced Drone Models** – Multi-rotor and fixed-wing drones designed for real-world applications.  
-- **Immersive Website Experience** – Full 3D galleries, hover effects, animated sections, and cinematic transitions.  
-- **Industry-Focused Solutions** – Agriculture, logistics, windmill inspection, precision mapping, public safety, and more.  
-- **DaaS Integration** – Real-time drone-as-a-service model for clients.  
-- **Modern UI/UX** – Clean, polished, minimalistic, and highly interactive.  
+- Advanced drone models (multi-rotor and fixed-wing)
+- Immersive website experience: 3D galleries, hover effects, animated sections, cinematic transitions
+- Industry-focused solutions (agriculture, logistics, inspections, mapping, public safety)
+- DaaS integration for real-time service delivery
+- Modern, interactive UI/UX
 
 ### 🌟 Core Values
-1. **Innovation** – Constantly pushing technological boundaries.  
-2. **Quality** – Engineering precision and reliability into every drone.  
-3. **Safety** – Ensuring secure, stable, and dependable flight operations.  
-4. **Sustainability** – Promoting eco-friendly drone applications.  
-5. **Community** – Empowering industries and individuals with drone technology.  
+- Innovation  
+- Quality  
+- Safety  
+- Sustainability  
+- Community
 
-### 🎉 Who This Website Is For
+### 🎉 Target Audience
 - Drone manufacturers  
 - Enterprise clients  
 - Government agencies  
 - Industrial service providers  
-- Drone enthusiasts & engineers  
-- Investors & partners  
+- Drone engineers & enthusiasts  
+- Investors & partners
 
 ---
 
 ## 🚀 Features
 
-- **Animated Hero Section** with CTA buttons  
-- **Interactive Drone Models Showcase**  
-- **3D Hover Gallery & Lightswind 3D Image Gallery**  
-- **Animated Solutions Section (DJI-style scroll animations)**  
-- **Dedicated Products Pages** (Hexa Agri Pro, Octa Plus Extreme, Varuna 6x, etc.)  
-- **DaaS Page** with scroll-based drone animations  
-- **Video Modal with YouTube Integration**  
-- **About Page with Background Video & Animated India Map**  
-- **Contact Page with Beautiful Form Layout**  
-- **Interactive Card Gallery (Lightswind)**  
-- **Fully Responsive UI**  
-- **Smooth Scroll, Parallax, Hover Zoom, and Motion Effects**  
-- **Dropdown Navigation with Multi-Page Routing**  
-- **SEO Optimized, Fast, Modern UI**  
+- Animated hero section with CTA  
+- Interactive drone model showcase  
+- 3D hover gallery (Three.js)  
+- Animated solutions section with scroll-based effects  
+- Dedicated product pages (e.g., Hexa Agri Pro, Octa Plus Extreme)  
+- DaaS page with animated drone flows  
+- Video modal with YouTube integration  
+- About page with background video & animated map  
+- Contact page with polished form UI  
+- Interactive card gallery component  
+- Fully responsive design, smooth scroll, parallax, and motion effects  
+- SEO-optimized and fast
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React / Next.js (App Router)**  
-- **TypeScript**  
-- **Tailwind CSS**  
-- **Framer Motion** (animations)  
-- **Lightswind UI Components**  
-- **Lucide Icons**  
-- **React Router / Next Navigation**  
-- **Three.js (3D gallery)**  
+- React / Next.js (App Router)  
+- TypeScript  
+- Tailwind CSS  
+- Framer Motion  
+- Three.js (3D)  
+- Lightswind UI components  
+- Lucide icons
 
-### Additional Tools
-- **Vercel / Netlify Deployment**  
-- **Figma Designs**  
-- **ESLint + Prettier**  
-- **Next UI Components**  
-- **Custom Hover Card & Parallax Effects**  
+### Tools & Deployment
+- Vercel / Netlify  
+- Figma (design)  
+- ESLint + Prettier
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)  
-- npm or yarn  
-- Basic understanding of React/Next.js  
+- Node.js v18+  
+- npm or yarn
+
+### Install
+```bash
+npm install
+```
+
+### Start development
+```bash
+npm run dev
+```
+
+Visit: http://localhost:3000
+
+### Environment variables
+Create a .env.local file at the project root:
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_key_here
+```
 
 ---
 
-### 🖥️ Install Dependencies
+## 📱 Key Components
 
-npm install
-▶️ Run Development Server
+- Hero — Animated landing section  
+- InteractiveCardGallery — Hover 3D interactive cards  
+- ThreeDHoverGallery — Full 3D drone gallery  
+- DroneShowcase — Animated models section  
+- SolutionsPage — Industry use cases with scroll animations  
+- DaaSPage — Drone-as-a-Service interactions  
+- AboutPage — Background video + animated map  
+- ContactPage — Clean form UI  
+- Navbar — Responsive navigation with dropdowns
 
-npm run dev
-Visit the site at:
-http://localhost:3000
+---
 
-🔐 Environment Variables (if required)
-Create a .env.local file:
+## 🎯 Future Enhancements
 
-env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_key
+- AI-powered drone simulation  
+- Real-time flight tracking dashboard  
+- CMS (Strapi / Sanity) integration  
+- API backend (Node.js)  
+- Drone comparison tool  
+- AR-based model viewer
 
-📱 Key Components
+---
 
-Hero – Top animated landing section
-InteractiveCardGallery – Hover 3D interactive cards
-ThreeDHoverGallery – Full 3D drone gallery
-DroneShowcase – Animated models section
-SolutionsPage – Industry applications with scroll animations
-DaaSPage – Drone-as-a-Service with animated 3D drone
-AboutPage – Background video + animated India map
-ContactPage – Clean UI form section
-Navbar – Smooth dropdown navigation
+## 👥 Contributing
 
-🎯 Future Enhancements
+1. Fork the repository  
+2. Create a branch:
+```bash
+git checkout -b feature/your-feature
+```
+3. Commit your changes:
+```bash
+git commit -m "Add feature"
+```
+4. Push and open a PR:
+```bash
+git push origin feature/your-feature
+```
 
-AI-powered drone simulation
-Real-time flight tracking dashboard
-CMS admin panel (Strapi / Sanity)
-API backend integration (Node.js)
-Drone comparison tool
-AR-based model viewer
-Cloud-hosted drone analytics
+---
 
-👥 Contributing
-Fork the repository
+## 📄 License
+Licensed under the MIT License.
 
-Create a branch:
-git checkout -b feature/YourFeature
-
-Commit changes:
-git commit -m "Added new feature"
-
-Push to GitHub:
-git push origin feature/YourFeature
-
-Open a Pull Request
-
-📄 License
-This project is licensed under the MIT License.
-
-👤 Author
-Magic Myna Development Team
-Website designed & developed by Jeffrin M.
+## 👤 Author
+Magic Myna Development Team — Website designed & developed by Jeffrin M.

@@ -75,43 +75,6 @@ To revolutionize the drone ecosystem by building powerful, intelligent, and acce
 - **Next UI Components**  
 - **Custom Hover Card & Parallax Effects**  
 
----
-
-## 📁 Project Structure
-
-magic-myna/
-│
-├── public/
-│ ├── images/
-│ ├── models/
-│ └── assets/
-│
-├── src/
-│ ├── app/
-│ │ ├── page.tsx
-│ │ ├── about/
-│ │ ├── contact/
-│ │ ├── products/
-│ │ └── solutions/
-│ │
-│ ├── components/
-│ │ ├── Navbar.tsx
-│ │ ├── Hero.tsx
-│ │ ├── ThreeDHoverGallery.tsx
-│ │ ├── DroneShowcase.tsx
-│ │ ├── InteractiveCardGallery.tsx
-│ │ ├── Footer.tsx
-│ │ └── VideoModal.tsx
-│ │
-│ ├── styles/
-│ │ └── globals.css
-│ │
-│ └── utils/
-│
-└── package.json
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -123,7 +86,6 @@ magic-myna/
 
 ### 🖥️ Install Dependencies
 
-```bash
 npm install
 ▶️ Run Development Server
 
